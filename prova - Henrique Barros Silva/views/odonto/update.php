@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Odonto */
 
-$this->title = 'Update Odonto: ' . $model->id;
+$this->title = 'Atualizar Odonto: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Odontos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Atualizar';
 ?>
 <div class="odonto-update">
 

@@ -32,9 +32,8 @@ class Paciente extends \yii\db\ActiveRecord
         return [
             [['nome', 'telefone'], 'required'],
             [['nome'], 'string'],
-            [['nascimento'], 'data','format' => Yii::$app->formatter->dateFormat],
+            [['nascimento'], 'date','format' => Yii::$app->formatter->dateFormat],
             [['telefone'], 'default', 'value' => null],
-            [['telefone'], 'integer'],
         ];
     }
 

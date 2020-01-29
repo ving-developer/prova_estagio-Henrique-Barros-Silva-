@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Odonto */
 
-$this->title = 'Create Odonto';
+$this->title = 'Adicionar Odonto';
 $this->params['breadcrumbs'][] = ['label' => 'Odontos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Formas Pagamentos';
+$this->title = 'Formas de Pagamento';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="formas-pagamento-index">
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Formas Pagamento', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Adicionar Forma de Pagamento', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
