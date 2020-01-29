@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\FormasPagamento */
 
-$this->title = 'Create Formas Pagamento';
+$this->title = 'Adicionar Formas Pagamento';
 $this->params['breadcrumbs'][] = ['label' => 'Formas Pagamentos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

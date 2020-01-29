@@ -29,7 +29,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Yii::$app->formatter->asDate($model->data,Yii::$app->formatter->dateFormat);
                 }
             ],
-            'forma',
+            [
+                'attribute'=>'forma',
+                'value' => function($model) {
+                    if(\app\models\FormasPagamento::find()->where(['id'=>$model->forma])->one()!=null)
+                        return \app\models\FormasPagamento::find()->where(['id'=>$model->forma])->one()->nome;
+                },
+                'filterType' => \kartik\grid\GridView::FILTER_SELECT2,
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\FormasPagamento::find()->asArray()->orderBy('nome')->all(),'id','nome'),
+                'filterWidgetOptions' =>[
+                    'pluginOptions' => ['allowClear' => true, 'placeholder' => 'Pagamento']
+                ],
+            ],
             'valor',
             ['attribute' =>'id_dr',
                 'value' => function($model){

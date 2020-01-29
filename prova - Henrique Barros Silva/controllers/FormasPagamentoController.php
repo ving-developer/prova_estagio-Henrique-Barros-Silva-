@@ -67,7 +67,7 @@ class FormasPagamentoController extends Controller
         $model = new FormasPagamento();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect('\..\financeiro/create');
         }
 
         return $this->render('create', [

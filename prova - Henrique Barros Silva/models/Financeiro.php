@@ -36,11 +36,24 @@ class Financeiro extends \yii\db\ActiveRecord
     {
         return [
             [['data', 'data_cheque'], 'date','format'=>Yii::$app->formatter->dateFormat],
+            ['data','compare', 'compareValue' => date('d/m/Y'), 'operator' => '>=', 'message' => 'A data do pagamento não pode ser anterior ao dia atual'],
             [['forma', 'id_dr', 'id_cliente'], 'required'],
             [['forma', 'valor', 'id_dr', 'id_cliente', 'parcelamentocartao'], 'default', 'value' => null],
             [['forma', 'id_dr', 'id_cliente', 'parcelamentocartao'], 'integer'],
             [['id_dr'], 'exist', 'skipOnError' => true, 'targetClass' => Odonto::className(), 'targetAttribute' => ['id_dr' => 'id']],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Paciente::className(), 'targetAttribute' => ['id_cliente' => 'id']],
+            [['parcelamentocartao'], 'required', 'when' => function ($model, $attribute) {
+                return $model->forma == 1;
+            }, 'whenClient' => "function(attribute, value){
+                    return $('#Financeiro-forma').val() === 1;  
+                }"
+            ],
+            [['data_cheque'], 'required', 'when' => function ($model, $attribute) {
+                return $model->forma == 2;
+            }, 'whenClient' => "function(attribute, value){
+                    return $('#Financeiro-forma').val() === 2;  
+                }"
+            ],
         ];
     }
 

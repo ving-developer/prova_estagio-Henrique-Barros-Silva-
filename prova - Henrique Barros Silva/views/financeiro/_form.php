@@ -70,23 +70,89 @@ use yii\helpers\ArrayHelper;
                     'clientOptions'=>['removeMaskOnSubmit' => false]
                 ],
             ],
-            'forma' => ['type' => Form::INPUT_TEXT,
-                /*'widgetClass' => '\kartik\widgets\Select2',
+            'forma' => ['type' => Form::INPUT_WIDGET,
+                'widgetClass' => '\kartik\widgets\Select2',
                 'options' => [
+                    'data' => $pagamentos,
                     'options' => [
-                        'placeholder' => 'Selecione o Paciente'
+                        'id' => 'forma',
+                        'placeholder' => 'Selecione a forma de pagamento',
+                        'onchange' => '
+                                    var formaPag = $(this).val();
+                                    if (formaPag == 1){
+                                        $(\'#parcelamentocartao-form\').show();
+                                        $(\'#data_cheque-form\').hide();
+                                        
+                                    }else if (formaPag == 2){
+                                        $(\'#data_cheque-form\').show();
+                                        $(\'#parcelamentocartao-form\').hide()
+                                    }else{
+                                        $(\'#data_cheque-form\').hide();
+                                        $(\'#parcelamentocartao-form\').hide()
+                                    }
+                                '
                     ],
                     'pluginOptions' => [
                         'autoclose' => true
-                    ],
-                    'data' => $pagamentos
-                ]*/
+                    ]
+                ]
             ],
         ]
-    ])
+    ]);
     ?>
+
+    <div id="parcelamentocartao-form">
+        <?=Form::widget([
+            'model' => $model,
+            'form' => $form,
+            'columns' => 1,
+            'attributes' => [
+                    'parcelamentocartao' =>[
+                        'type' => Form::INPUT_TEXT,
+                    ]
+            ]
+        ]);
+
+        $hide_cartao = '$(\'#parcelamentocartao-form\').hide()';
+        $this->registerJs($hide_cartao);
+        ?>
+        <hr>
+    </div>
+
+    <div id="data_cheque-form">
+        <?=Form::widget([
+            'model' => $model,
+            'form' => $form,
+            'columns' => 1,
+            'attributes' => [
+                'data_cheque' =>[
+                    'type' => Form::INPUT_WIDGET,'columnOptions' => ['colspan' => 1],
+                    'widgetClass' => '\kartik\widgets\DatePicker',
+                    'options' => [
+                        'options' => [
+                            'placeholder' => 'Entre com a data'
+                        ],
+                        'pluginOptions' => [
+                            'autoclose' => true,
+                            'format' => 'dd/mm/yyyy'
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+
+        $hide_cheque = '$(\'#data_cheque-form\').hide()';
+        $this->registerJs($hide_cheque);
+        ?>
+        <hr>
+    </div>
+
     <div class="form-group">
-        <?= Html::submitButton('Adicionar', ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Cadastrar Uma Forma de Pagamento',['/formas-pagamento/create'], ['class' => 'btn btn-warning'])?>
+        <hr>
+    </div>
+    <div class="form-group">
+        <?= Html::submitButton('Salvar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

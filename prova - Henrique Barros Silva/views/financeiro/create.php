@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Financeiro */
 
-$this->title = 'Create Financeiro';
+$this->title = 'Adicionar Financeiro';
 $this->params['breadcrumbs'][] = ['label' => 'Financeiro', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
