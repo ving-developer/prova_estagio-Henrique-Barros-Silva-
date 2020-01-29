@@ -79,11 +79,11 @@ use yii\helpers\ArrayHelper;
                         'placeholder' => 'Selecione a forma de pagamento',
                         'onchange' => '
                                     var formaPag = $(this).val();
-                                    if (formaPag == 1){
+                                    if (formaPag == -1){
                                         $(\'#parcelamentocartao-form\').show();
                                         $(\'#data_cheque-form\').hide();
                                         
-                                    }else if (formaPag == 2){
+                                    }else if (formaPag == -2){
                                         $(\'#data_cheque-form\').show();
                                         $(\'#parcelamentocartao-form\').hide()
                                     }else{

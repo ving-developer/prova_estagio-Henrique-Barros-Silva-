@@ -17,8 +17,8 @@ class m200124_124925_criando_tabela_formas_pagamento extends Migration
            'nome' => $this->string(256)
         ]);
 
-        $this->execute('insert into formas_pagamento values (1,\'Cartão\')');
-        $this->execute('insert into formas_pagamento values (2,\'Cheque-pré\')');
+        $this->execute('insert into formas_pagamento values (-1,\'Cartão\')');
+        $this->execute('insert into formas_pagamento values (-2,\'Cheque-pré\')');
     }
 
     /**
